@@ -1,0 +1,5 @@
+# O Caminho - bloqueia execução de scripts dentro da pasta de uploads
+<FilesMatch "\.(php|phtml|php3|php4|php5|phps|cgi|pl|py|sh)$">
+  Require all denied
+</FilesMatch>
+Options -Indexes

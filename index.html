@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="O Caminho - Sistema de estudo da Bíblia Sagrada">
+  <meta name="author" content="Cleilton Nascimento">
+  <meta name="theme-color" content="#1f3a5f">
+  <title>O Caminho - Entrar</title>
+  <script>
+    /* aplica o tema salvo antes de desenhar a página (evita "piscar") */
+    (function () {
+      try {
+        var t = localStorage.getItem('oc_tema');
+        if (!t) t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', t);
+        if (localStorage.getItem('oc_contraste') === 'alto') document.documentElement.setAttribute('data-contrast', 'alto');
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#form-login">Ir para o formulário de login</a>
+
+  <div class="login-page">
+    <div class="login-top">
+      <button type="button" class="theme-toggle" id="themeToggle" role="switch" aria-checked="false" aria-label="Tema escuro">
+        <span class="tt-track"><span class="tt-orb"><span class="tt-face tt-sun"></span><span class="tt-face tt-moon"></span></span></span>
+      </button>
+    </div>
+
+    <main class="login-card" aria-labelledby="titulo">
+      <div class="brand">
+        <svg viewBox="0 0 96 96" role="img" aria-label="Logotipo O Caminho: livro aberto com uma estrada de luz">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#d9a441"/><stop offset="1" stop-color="#b8862b"/>
+            </linearGradient>
+          </defs>
+          <circle cx="48" cy="48" r="45" fill="none" stroke="url(#g1)" stroke-width="3"/>
+          <path d="M14 62 L48 70 L82 62 L82 34 L48 42 L14 34 Z" fill="var(--card)" stroke="var(--primary)" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M48 42 L48 70" stroke="var(--primary)" stroke-width="3"/>
+          <path d="M48 66 C 44 56, 54 52, 48 44 C 46 41, 48 36, 48 30" fill="none" stroke="url(#g1)" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="48" cy="22" r="5" fill="url(#g1)"/>
+        </svg>
+        <h1 id="titulo">O Caminho</h1>
+        <p>Estudo da Bíblia Sagrada</p>
+      </div>
+
+      <div id="erro" class="alert hidden" role="alert" aria-live="assertive"></div>
+
+      <form id="form-login" autocomplete="on" novalidate>
+        <div class="field">
+          <label for="usuario">Usuário</label>
+          <input type="text" id="usuario" name="usuario" autocomplete="username" autocapitalize="none" spellcheck="false" required>
+        </div>
+        <div class="field">
+          <label for="senha">Senha</label>
+          <div class="pass-wrap">
+            <input type="password" id="senha" name="senha" autocomplete="current-password" required>
+            <button type="button" class="btn sec small icon" id="verSenha" aria-label="Mostrar senha" aria-pressed="false">👁</button>
+          </div>
+        </div>
+        <button type="submit" class="btn" id="entrar" style="width:100%">Entrar</button>
+      </form>
+    </main>
+
+    <p class="footer-note">
+      © <span id="ano"></span> O Caminho. Sistema criado e desenvolvido por <strong>Cleilton Nascimento</strong>.<br>
+      Todos os direitos reservados.
+    </p>
+  </div>
+
+  <script src="js/login.js"></script>
+</body>
+</html>
